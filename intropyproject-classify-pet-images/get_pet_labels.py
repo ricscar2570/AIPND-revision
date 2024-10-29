@@ -53,8 +53,8 @@ def get_pet_labels(image_dir):
             continue
         
         # Extract pet label from the filename
-        pet_label = ''.join([word for word in filename.lower().split('_') if word.isalpha()]).strip()
-        
+        #pet_label = ''.join([word for word in filename.lower().split('_') if word.isalpha()]).strip()
+        pet_label = ' '.join([word for word in filename.lower().split('_') if word.isalpha()]).strip()
         # Add to dictionary if filename is not already a key in results_dic
         if filename not in results_dic:
             results_dic[filename] = [pet_label]
