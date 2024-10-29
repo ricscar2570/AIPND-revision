@@ -72,21 +72,24 @@ def print_results(results_dic, results_stats_dic, model,
             print(f"{key}: {results_stats_dic[key]:.2f}%")
 
     # If requested, print misclassified dogs
-    if print_incorrect_dogs:
+                   
+    # if print_incorrect_dogs:
+    if print_incorrect_dogs and (results_stats_dic['n_correct_dogs'] + results_stats_dic['n_correct_notdogs'] != results_stats_dic['n_images']): 
         print("\n*** Misclassified Dogs ***")
         # Loop through results to find misclassified dogs
         for filename, values in results_dic.items():
             # Incorrect dog classification: pet label is a dog but classifier label is not (or vice versa)
             if values[3] != values[4]:
-                print(f"Image: {filename}")
+                #print(f"Image: {filename}") deleted for unusefulness
                 print(f"Pet Label: {values[0]} - Classifier Label: {values[1]}")
     
     # If requested, print misclassified breeds
-    if print_incorrect_breed:
+    if print_incorrect_breed and (results_stats_dic['n_correct_dogs'] != results_stats_dic['n_correct_breed']):   
+    #if print_incorrect_breed:
         print("\n*** Misclassified Dog Breeds ***")
         # Loop through results to find misclassified breeds
         for filename, values in results_dic.items():
             # Incorrect breed classification: pet label and classifier both identify as dogs, but breeds do not match
             if values[3] == 1 and values[4] == 1 and values[2] == 0:
-                print(f"Image: {filename}")
+                #print(f"Image: {filename}") deleted for unusefulness
                 print(f"Pet Label: {values[0]} - Classifier Label: {values[1]}")
