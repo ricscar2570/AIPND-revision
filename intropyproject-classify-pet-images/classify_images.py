@@ -20,6 +20,7 @@
 #           of the pet and classifier labels as the item at index 2 of the list.
 #
 ##
+import os #to enable correction on line 60
 # Imports classifier function for using CNN to classify images 
 from classifier import classifier 
 
@@ -55,9 +56,11 @@ def classify_images(images_dir, results_dic, model):
            None - results_dic is mutable data type so no return needed.         
     """
     # Iterate through each filename in results_dic to classify and compare labels
-    for filename in results_dic:
+    for filename,value in results_dic.items:
+       
         # Full path to image file
-        image_path = f"{images_dir}/{filename}"
+        os.path.join(images_dir, filename) #improvement of the line below
+        #image_path = f"{images_dir}/{filename}"
         
         # Get classifier label from classifier function
         classifier_label = classifier(image_path, model)
