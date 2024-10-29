@@ -40,6 +40,26 @@ def get_pet_labels(image_dir):
       List. The list contains for following item:
          index 0 = pet image label (string)
     """
-    # Replace None with the results_dic dictionary that you created with this
-    # function
-    return None
+    # Initialize an empty dictionary to store the results
+    results_dic = {}
+    
+    # Retrieve the list of files from the specified directory
+    filename_list = listdir(image_dir)
+    
+    # Process each file in the directory
+    for filename in filename_list:
+        # Skip files that are not images (optional depending on dataset)
+        if filename.startswith('.'):
+            continue
+        
+        # Extract pet label from the filename
+        pet_label = ''.join([word for word in filename.lower().split('_') if word.isalpha()]).strip()
+        
+        # Add to dictionary if filename is not already a key in results_dic
+        if filename not in results_dic:
+            results_dic[filename] = [pet_label]
+        else:
+            print(f"** Warning: Key={filename} already exists in results_dic with value={results_dic[filename]}")
+
+    # Return the results_dic dictionary containing pet labels
+    return results_dic

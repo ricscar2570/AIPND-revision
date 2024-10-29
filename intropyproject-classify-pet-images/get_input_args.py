@@ -23,21 +23,48 @@ import argparse
 # 
 def get_input_args():
     """
-    Retrieves and parses the 3 command line arguments provided by the user when
-    they run the program from a terminal window. This function uses Python's 
-    argparse module to created and defined these 3 command line arguments. If 
-    the user fails to provide some or all of the 3 arguments, then the default 
-    values are used for the missing arguments. 
-    Command Line Arguments:
-      1. Image Folder as --dir with default value 'pet_images'
-      2. CNN Model Architecture as --arch with default value 'vgg'
-      3. Text File with Dog Names as --dogfile with default value 'dognames.txt'
-    This function returns these arguments as an ArgumentParser object.
+    Retrieves and parses the command line arguments provided by the user when
+    running the program from a terminal window. This function uses argparse
+    to create and define three command line arguments:
+        1. Image folder directory (mandatory positional argument)
+        2. Model architecture (optional argument with default value)
+        3. Dognames file (optional argument with default value)
+        
     Parameters:
      None - simply using argparse module to create & store command line arguments
+    
     Returns:
-     parse_args() -data structure that stores the command line arguments object  
+     parse_args() - data structure that stores the command line arguments object  
     """
-    # Replace None with parser.parse_args() parsed argument collection that 
-    # you created with this function 
-    return None
+    # Create Argument Parser object named parser
+    parser = argparse.ArgumentParser(
+        description="Retrieve command line arguments for image classification"
+    )
+    
+    # Argument 1: Directory with pet images (mandatory)
+    parser.add_argument(
+        '--dir',
+        type=str,
+        default='intropyproject-classify-pet-images/pet_images/',
+        help='Path to the folder of pet images (default: pet_images/)',
+    )
+    
+    # Argument 2: CNN Model Architecture (optional, default: 'vgg')
+    parser.add_argument(
+        '--arch',
+        type=str,
+        default='vgg',
+        choices=['vgg', 'alexnet', 'resnet'],
+        help='Choose CNN model architecture (vgg, alexnet, or resnet; default: vgg)',
+    )
+    
+    # Argument 3: Text file with dog names (optional, default: 'dognames.txt')
+    parser.add_argument(
+        '--dogfile',
+        type=str,
+        default='dognames.txt',
+        help='Text file containing list of valid dognames (default: dognames.txt)',
+    )
+    
+    # Parse and return command line arguments
+    return parser.parse_args()
