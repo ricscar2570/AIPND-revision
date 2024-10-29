@@ -56,10 +56,10 @@ def classify_images(images_dir, results_dic, model):
            None - results_dic is mutable data type so no return needed.         
     """
     # Iterate through each filename in results_dic to classify and compare labels
-    for filename,value in results_dic.items:
+    for filename,value in results_dic.items():
        
         # Full path to image file
-        os.path.join(images_dir, filename) #improvement of the line below
+        image_path = os.path.join(images_dir, filename) #improvement of the line below
         #image_path = f"{images_dir}/{filename}"
         
         # Get classifier label from classifier function
