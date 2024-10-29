@@ -22,7 +22,6 @@
 #   Example call:
 #    python check_images_solution.py --dir pet_images/ --arch vgg --dogfile dognames.txt
 ##
-import os
 # Imports python modules
 from time import time, sleep
 
