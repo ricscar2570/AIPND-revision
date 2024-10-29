@@ -45,7 +45,7 @@ def get_input_args():
     parser.add_argument(
         '--dir',
         type=str,
-        default='intropyproject-classify-pet-images/pet_images/',
+        default='pet_images/',
         help='Path to the folder of pet images (default: pet_images/)',
     )
     
