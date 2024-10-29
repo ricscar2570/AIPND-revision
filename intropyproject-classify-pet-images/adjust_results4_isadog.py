@@ -62,7 +62,7 @@ def adjust_results4_isadog(results_dic, dogfile):
     dognames_dic = {}
     
     # Open the dogfile and read each line
-    with open('intropyproject-classify-pet-images/'+ dogfile, 'r') as f:
+    with open(dogfile, 'r') as f:
         for line in f:
             # Strip whitespace and newline, add name to dictionary with a value of 1
             dog_name = line.strip()
